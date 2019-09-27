@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    ​ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+          <div class="container">
+            <div class="card w-50 m-auto">
+                <div class="card-header text-center text-white bg-danger"><h1>My BMI Calculator</h1></div>
+                <div class="card-body">
+                    <form class="w-75 m-auto" onsubmit="return false">
+                            <div class="form-group">
+                                <label>Weight (in Kg)</label>
+                                <input type="text" name="" id="weight" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Height (in Ft)</label>
+                                <input type="text" name="" id="height" class="form-control" required>
+                            </div>
+ <button class="btn btn-primary m-auto" onclick="getbmivalue()">Click to Get BMI Result</button>
+                            <div class="form-group">
+                                <label>BMI Result </label>
+                                <input type="text" name="" id="bmivalue" class="form-control">
+                            </div>
+
+                           
+                    </form>
+
+                </div>
+                <div class="card-footer text-center text-white bg-danger border-info rounded-lg"><h1 id="foot">A healthy BMI Range is 19 to 25</h1></div>
+
+            </div>
+
+        </div>
+        <script>
+
+            function getbmivalue(){
+            var weight=document.querySelector("#weight").value;
+            var height=document.querySelector("#height").value;
+
+            height = (height * 12) * 0.025;
+
+                var val= Math.round(weight / Math.pow(height, 2));
+
+                if (val>=26){
+                    document.getElementById("foot").innerHTML="You are Overloaded, Please Controle yourself";
+                } else if (val >= 19){
+                    document.querySelector("#foot").innerHTML="Congrasulation.. You are Parfect in weight"
+                } else {
+                    document.querySelector("#foot").innerHTML="You are very poor in weight, Please Take care of you";
+                }
+
+            document.querySelector("#bmivalue").value=val;
+
+            }
+            
+        </script>
+  </body>
+</html>
